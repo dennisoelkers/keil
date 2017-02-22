@@ -5,6 +5,11 @@ go:
   - 1.7.x
   - master
 
+addons:
+  apt:
+    packages:
+    - libpcap0.8-dev
+
 install:
   - go get -v github.com/Masterminds/glide
   - cd $GOPATH/src/github.com/Masterminds/glide && git checkout tags/0.10.2 && go install && cd -
