@@ -59,7 +59,7 @@ func main() {
 			hostname = "unknown"
 		}
 		packetEvent["host"] = hostname
-		packetEvent["timestamp"] = time.Now().UTC().String()
+		packetEvent["timestamp"] = int32(time.Now().Unix())
 		packetEvent["facility"] = *facility
 		packetEvent["short_message"] = packet.String()
 
