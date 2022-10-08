@@ -1,0 +1,37 @@
+name: Build
+
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os.host }}
+    strategy:
+      matrix:
+        os:
+          - name: openbsd
+            architecture: x86-64
+            version: '7.1'
+            host: macos-12
+
+          - name: openbsd
+            architecture: arm64
+            version: '7.1'
+            host: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build on ${{ matrix.os.name }}
+        uses: cross-platform-actions/action@v0.3.1
+        with:
+          operating_system: ${{ matrix.os.name }}
+          architecture: ${{ matrix.os.architecture }}
+          version: ${{ matrix.os.version }}
+          shell: bash
+          run: |
+            uname -a
+            pkg_add go
+            make
+            
