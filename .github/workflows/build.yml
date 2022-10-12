@@ -32,6 +32,6 @@ jobs:
           shell: bash
           run: |
             uname -a
-            doas pkg_add go
+            sudo pkg_add go
             make
             
