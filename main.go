@@ -70,7 +70,7 @@ func main() {
 			handlePacketLayer(packetEvent, layer)
 		}
 
-		packetEvent["layers"] = strings.Join(layers, "->")
+		packetEvent["layers"] = layers
 
 		jsonEvent, _ := json.Marshal(packetEvent)
 		g.Log(string(jsonEvent))
