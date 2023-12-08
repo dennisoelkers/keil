@@ -65,7 +65,7 @@ func handleIPv6(event map[string]interface{}, layer gopacket.Layer) {
 }
 
 func handleTCP(event map[string]interface{}, layer gopacket.Layer) {
-	event["protocol"] = "TCP"
+	event["ProtocolName"] = "TCP"
 	tcp, _ := layer.(*layers.TCP)
 	tcpEvent := structs.Map(tcp)
 
@@ -87,7 +87,7 @@ func handleTCP(event map[string]interface{}, layer gopacket.Layer) {
 }
 
 func handleUDP(event map[string]interface{}, layer gopacket.Layer) {
-	event["protocol"] = "UDP"
+	event["ProtocolName"] = "UDP"
 	udp, _ := layer.(*layers.UDP)
 	udpEvent := structs.Map(udp)
 
